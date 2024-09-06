@@ -17,6 +17,9 @@ typedef long long ll;
 template <typename T>
 using vi = vector<T>;
 
+template <typename key, typename value>
+using um = unordered_map<key, value>;
+
 #define el cout << "\n"
 
 // LOGS
@@ -31,6 +34,9 @@ using vi = vector<T>;
 
 // sort
 #define all(_arr_) sort(_arr_.begin(), _arr_.end());
+
+// utilities
+#define umf(C, _um_, val) C = _um_.find(val) != _um_.end()
 
 
 // DISJOINT SET UNION
