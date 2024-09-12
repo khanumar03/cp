@@ -9,6 +9,7 @@
 #include <queue>
 #include <math.h>
 #include <cstring>
+#include <cstdio>
 
 using namespace std;
 
@@ -19,6 +20,9 @@ using vi = vector<T>;
 
 template <typename key, typename value>
 using um = unordered_map<key, value>;
+
+template <typename value>
+using us = unordered_set<value>;
 
 #define el cout << "\n"
 
@@ -36,12 +40,23 @@ using um = unordered_map<key, value>;
 #define all(_arr_) sort(_arr_.begin(), _arr_.end());
 
 // utilities
-#define umf(C, _um_, val) C = _um_.find(val) != _um_.end()
-#define rev(_v_) reverse(_v_.begin(), _v_.end()) 
+#define hc(C, _hash_, val) C = _hash_.find(val) != _hash_.end()
+#define rev(_v_) reverse(_v_.begin(), _v_.end())
+#define push(arr,val) arr.push_back(val);
+#define pop(arr) arr.pop_back();
 
 // lambda
 auto dtob = [](ll num) { string s; while(num) { s += to_string(num % 2); num /= 2; } rev(s); return s; };
+auto isoe = [](ll num) { return (num & 1) == 1; };
 
+void io() {
+     #ifndef ONLINE_JUDGE
+        freopen("input.txt", "r", stdin);
+        freopen("output.txt", "w", stdout);
+    #endif 
+}
+
+void solve() {}
 
 // DISJOINT SET UNION
 class DSU
@@ -214,10 +229,8 @@ public:
         return {max(left.first, right.first), min(left.second, right.second)};
     }
 };
-void solve() {};
 
 int main()
 {
     ios::sync_with_stdio(0);
-    out(dtob(29),0);
 }
