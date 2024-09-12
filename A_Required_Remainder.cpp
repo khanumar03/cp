@@ -9,7 +9,6 @@
 #include <queue>
 #include <math.h>
 #include <cstring>
-#include <cstdio>
 
 using namespace std;
 
@@ -26,7 +25,7 @@ using um = unordered_map<key, value>;
 // LOGS
 #define no cout << "NO"
 #define yes cout << "YES"
-#define out(val, s) (cout << val << (s ? " " : "")) 
+#define out(val, s) cout << val << (s ? " " : "") 
 
 // LOOPS
 #define FOR(i, s, e, inc) for (int i = (s); i < (e); i += inc)
@@ -38,29 +37,25 @@ using um = unordered_map<key, value>;
 
 // utilities
 #define umc(C, _um_, val) C = _um_.find(val) != _um_.end()
-#define rev(_v_) reverse(_v_.begin(), _v_.end())
 
-// lambda
-auto dtob = [](ll num) { string s; while(num) { s += to_string(num % 2); num /= 2; } rev(s); return s; };
-auto isoe = [](ll num) { return (num & 1) == 1; };
+void solve() {
+    int x , y, n;
+    cin >> x >> y >> n;
 
-void io() {
-     #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif 
+    if(n % x == y) { out(n,0); el; return; }
+
+    int mod = n % x;
+    int s = n - mod;
+
+
+
+    if(s + y <= n) { out(s + y,0); el; return; }
+
+    out(s - x + y,0); el;
 }
 
-void solve() {}
-
 int main() {
-    io();
-    int n;
-    cin >> n;
-    if(n % 4 == 1) { out(0,1); out('A',0); }
-    else {
-        if(n % 4 == 0) { out(1,1); out('A',0); }
-        else if(n % 4 == 3) { out(2,1); out('A',0); }
-        else { out(1,1); out('B',0); }
-    }
+    int t;
+    cin >> t;
+    while(t--) { solve(); }
 }

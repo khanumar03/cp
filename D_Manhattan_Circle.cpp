@@ -39,6 +39,8 @@ using um = unordered_map<key, value>;
 // utilities
 #define umc(C, _um_, val) C = _um_.find(val) != _um_.end()
 #define rev(_v_) reverse(_v_.begin(), _v_.end())
+#define push(arr,val) arr.push_back(val);
+#define pop(arr) arr.pop_back();
 
 // lambda
 auto dtob = [](ll num) { string s; while(num) { s += to_string(num % 2); num /= 2; } rev(s); return s; };
@@ -51,16 +53,41 @@ void io() {
     #endif 
 }
 
-void solve() {}
+void solve() {
+    int n, m;
+    cin >> n >> m;
+
+    int st = 0;
+    int e = 0;
+    vector<string> r(n);
+    in(r);
+
+    FOR(i, 0, n, 1) {
+        auto check = find(r[i].begin(), r[i].end(), '#');
+        if(check != r[i].end()) { st = i; break; }
+    }
+
+    e = st;
+
+    FOR(i, st + 1, n, 1) {
+        auto check = find(r[i].begin(), r[i].end(),'#');
+        if(check == r[i].end()) { e = i - 1; break; }
+        if(i == n - 1) e = i;
+    }
+
+    int row = (st + e) / 2;
+
+    int cs = r[row].find('#');
+    int ce = r[row].rfind('#');
+
+    int col = (cs + ce) / 2;
+
+    out(row + 1, 1); out(col + 1, 0); el;
+}
 
 int main() {
     io();
-    int n;
-    cin >> n;
-    if(n % 4 == 1) { out(0,1); out('A',0); }
-    else {
-        if(n % 4 == 0) { out(1,1); out('A',0); }
-        else if(n % 4 == 3) { out(2,1); out('A',0); }
-        else { out(1,1); out('B',0); }
-    }
+    int t;
+    cin >> t;
+    while(t--) solve();
 }

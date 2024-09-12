@@ -9,7 +9,6 @@
 #include <queue>
 #include <math.h>
 #include <cstring>
-#include <cstdio>
 
 using namespace std;
 
@@ -38,29 +37,26 @@ using um = unordered_map<key, value>;
 
 // utilities
 #define umc(C, _um_, val) C = _um_.find(val) != _um_.end()
-#define rev(_v_) reverse(_v_.begin(), _v_.end())
-
-// lambda
-auto dtob = [](ll num) { string s; while(num) { s += to_string(num % 2); num /= 2; } rev(s); return s; };
-auto isoe = [](ll num) { return (num & 1) == 1; };
-
-void io() {
-     #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif 
-}
 
 void solve() {}
 
+vi<int> arr;
+
+
 int main() {
-    io();
-    int n;
-    cin >> n;
-    if(n % 4 == 1) { out(0,1); out('A',0); }
-    else {
-        if(n % 4 == 0) { out(1,1); out('A',0); }
-        else if(n % 4 == 3) { out(2,1); out('A',0); }
-        else { out(1,1); out('B',0); }
+    int t;
+    cin >> t;
+
+    auto compute = [] () { 
+        for(int i = 1; i <= 1700; i++) {
+            if(i % 3 != 0 && i % 10 != 3) arr.push_back(i);
+        }
+    };
+    compute();
+
+    while(t--) {
+        int k;
+        cin >> k;
+        out(arr[k - 1],0); el;
     }
 }

@@ -9,7 +9,6 @@
 #include <queue>
 #include <math.h>
 #include <cstring>
-#include <cstdio>
 
 using namespace std;
 
@@ -42,25 +41,28 @@ using um = unordered_map<key, value>;
 
 // lambda
 auto dtob = [](ll num) { string s; while(num) { s += to_string(num % 2); num /= 2; } rev(s); return s; };
-auto isoe = [](ll num) { return (num & 1) == 1; };
-
-void io() {
-     #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif 
-}
 
 void solve() {}
 
 int main() {
-    io();
-    int n;
-    cin >> n;
-    if(n % 4 == 1) { out(0,1); out('A',0); }
-    else {
-        if(n % 4 == 0) { out(1,1); out('A',0); }
-        else if(n % 4 == 3) { out(2,1); out('A',0); }
-        else { out(1,1); out('B',0); }
-    }
+    int l;
+    string s;
+    cin >> l;
+    cin >> s;
+
+    int o = 0;
+    int n = 0;
+    int e = 0;
+    int z = 0;
+    int r = 0;
+
+    FOR(i, 0, l, 1) 
+    { if(s[i] == 'o') o++; if(s[i] == 'n') n++; if(s[i] == 'e') e++; if(s[i] == 'z') z++; if(s[i] == 'r') r++; }
+
+    int one = min({o, n, e});
+    e -= one;
+    o -= one;
+    int zero = max({e, r, 0});
+    while(one--) out(1,1);
+    while(zero--) out(0,1);
 }

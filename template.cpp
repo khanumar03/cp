@@ -37,6 +37,10 @@ using um = unordered_map<key, value>;
 
 // utilities
 #define umf(C, _um_, val) C = _um_.find(val) != _um_.end()
+#define rev(_v_) reverse(_v_.begin(), _v_.end()) 
+
+// lambda
+auto dtob = [](ll num) { string s; while(num) { s += to_string(num % 2); num /= 2; } rev(s); return s; };
 
 
 // DISJOINT SET UNION
@@ -215,4 +219,5 @@ void solve() {};
 int main()
 {
     ios::sync_with_stdio(0);
+    out(dtob(29),0);
 }

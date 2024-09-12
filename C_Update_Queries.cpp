@@ -21,6 +21,9 @@ using vi = vector<T>;
 template <typename key, typename value>
 using um = unordered_map<key, value>;
 
+template <typename value>
+using us = unordered_set<value>;
+
 #define el cout << "\n"
 
 // LOGS
@@ -37,8 +40,10 @@ using um = unordered_map<key, value>;
 #define all(_arr_) sort(_arr_.begin(), _arr_.end());
 
 // utilities
-#define umc(C, _um_, val) C = _um_.find(val) != _um_.end()
+#define hc(C, _hash_, val) C = _hash_.find(val) != _hash_.end()
 #define rev(_v_) reverse(_v_.begin(), _v_.end())
+#define push(arr,val) arr.push_back(val);
+#define pop(arr) arr.pop_back();
 
 // lambda
 auto dtob = [](ll num) { string s; while(num) { s += to_string(num % 2); num /= 2; } rev(s); return s; };
@@ -51,16 +56,38 @@ void io() {
     #endif 
 }
 
-void solve() {}
+void solve() {
+    int n, m;
+    cin >> n >> m;
+
+    string s;
+    cin >> s;
+
+    us<int> st;
+    FOR(i, 0, m, 1) { int t; cin >> t; st.insert(t); }
+
+    string c;
+    cin >> c;
+    map<char, int> mapp;
+    FOR(i, 0, m,1) mapp[c[i]]++;
+
+
+    FOR(i, 1, n + 1, 1) {
+        bool c = 0;
+        hc(c,st,i);
+        if(!c) continue;
+        auto ch = mapp.begin();
+        s[i - 1] = ch->first;
+        ch->second--;
+        if(!ch->second) mapp.erase(ch);
+    }
+
+    out(s,0); el;
+}
 
 int main() {
     io();
-    int n;
-    cin >> n;
-    if(n % 4 == 1) { out(0,1); out('A',0); }
-    else {
-        if(n % 4 == 0) { out(1,1); out('A',0); }
-        else if(n % 4 == 3) { out(2,1); out('A',0); }
-        else { out(1,1); out('B',0); }
-    }
+    int t;
+    cin >> t;
+    while(t--) solve();
 }

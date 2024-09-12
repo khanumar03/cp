@@ -9,7 +9,6 @@
 #include <queue>
 #include <math.h>
 #include <cstring>
-#include <cstdio>
 
 using namespace std;
 
@@ -44,23 +43,10 @@ using um = unordered_map<key, value>;
 auto dtob = [](ll num) { string s; while(num) { s += to_string(num % 2); num /= 2; } rev(s); return s; };
 auto isoe = [](ll num) { return (num & 1) == 1; };
 
-void io() {
-     #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif 
-}
-
 void solve() {}
 
 int main() {
-    io();
     int n;
     cin >> n;
-    if(n % 4 == 1) { out(0,1); out('A',0); }
-    else {
-        if(n % 4 == 0) { out(1,1); out('A',0); }
-        else if(n % 4 == 3) { out(2,1); out('A',0); }
-        else { out(1,1); out('B',0); }
-    }
+    if(isoe(n)) out("Ehab", 0); else out("Mahmoud", 0);
 }

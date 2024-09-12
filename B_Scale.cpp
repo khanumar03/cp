@@ -51,16 +51,19 @@ void io() {
     #endif 
 }
 
-void solve() {}
+void solve() {
+    int n, k;
+    cin >> n >> k;
+    FOR(i, 0, n, k) {
+        string s;
+        FOR(skip,i, i + k, 1) cin >> s;
+        FOR(j, 0, n, k) out(s[j],0);el;
+    }
+}
 
 int main() {
     io();
-    int n;
-    cin >> n;
-    if(n % 4 == 1) { out(0,1); out('A',0); }
-    else {
-        if(n % 4 == 0) { out(1,1); out('A',0); }
-        else if(n % 4 == 3) { out(2,1); out('A',0); }
-        else { out(1,1); out('B',0); }
-    }
-}
+    int t;
+    cin >> t;
+    while(t--) solve();  
+} 

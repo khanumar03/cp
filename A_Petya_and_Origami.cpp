@@ -55,12 +55,10 @@ void solve() {}
 
 int main() {
     io();
-    int n;
-    cin >> n;
-    if(n % 4 == 1) { out(0,1); out('A',0); }
-    else {
-        if(n % 4 == 0) { out(1,1); out('A',0); }
-        else if(n % 4 == 3) { out(2,1); out('A',0); }
-        else { out(1,1); out('B',0); }
-    }
+    int n, k;
+    cin >> n >> k;
+    int r = ceil((2.0 * n) / k);
+    int g = ceil((5.0 * n) / k);
+    int b = ceil((8.0 * n) / k);
+    out(r + g + b, 0); el;
 }

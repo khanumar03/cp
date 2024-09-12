@@ -3,34 +3,70 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <set>
+#include <map>
 #include <vector>
 #include <algorithm>
 #include <queue>
+#include <math.h>
+#include <cstring>
+#include <cstdio>
 
 using namespace std;
 
 typedef long long ll;
 
 template <typename T>
-using vec = vector<T>;
+using vi = vector<T>;
 
-int main()
-{
-    string res;
-    int n, s;
-    cin >> n >> s >> res;
+template <typename key, typename value>
+using um = unordered_map<key, value>;
 
-    while (s--)
-    {
-        for (int i = 1; i < n; i++)
-        {
-            if (res[i] == 'G' && res[i - 1] == 'B')
-            {
-                swap(res[i], res[i - 1]);
+#define el cout << "\n"
+
+// LOGS
+#define no cout << "NO"
+#define yes cout << "YES"
+#define out(val, s) (cout << val << (s ? " " : "")) 
+
+// LOOPS
+#define FOR(i, s, e, inc) for (int i = (s); i < (e); i += inc)
+#define RFOR(i, s, e, dec) for (int i = (s); i >= (e); i -= dec)
+#define in(arr)  for (auto &i : arr) cin >> i
+
+// sort
+#define all(_arr_) sort(_arr_.begin(), _arr_.end());
+
+// utilities
+#define umc(C, _um_, val) C = _um_.find(val) != _um_.end()
+#define rev(_v_) reverse(_v_.begin(), _v_.end())
+
+// lambda
+auto dtob = [](ll num) { string s; while(num) { s += to_string(num % 2); num /= 2; } rev(s); return s; };
+auto isoe = [](ll num) { return (num & 1) == 1; };
+
+void io() {
+     #ifndef ONLINE_JUDGE
+        freopen("input.txt", "r", stdin);
+        freopen("output.txt", "w", stdout);
+    #endif 
+}
+
+void solve() {}
+
+int main() {
+    io();
+    int n, k;
+    cin >> n >> k;
+    string s;
+    cin >> s;
+
+
+    while(k--)
+        FOR(i,0,n - 1,1) { 
+            if(s[i] == 'B' && s[i + 1] == 'G') {
                 i++;
+                swap(s[i - 1], s[i]);
             }
         }
-    }
-
-    cout << res;
+    out(s,0);
 }

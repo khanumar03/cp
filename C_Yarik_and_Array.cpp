@@ -9,7 +9,6 @@
 #include <queue>
 #include <math.h>
 #include <cstring>
-#include <cstdio>
 
 using namespace std;
 
@@ -38,29 +37,28 @@ using um = unordered_map<key, value>;
 
 // utilities
 #define umc(C, _um_, val) C = _um_.find(val) != _um_.end()
-#define rev(_v_) reverse(_v_.begin(), _v_.end())
 
-// lambda
-auto dtob = [](ll num) { string s; while(num) { s += to_string(num % 2); num /= 2; } rev(s); return s; };
-auto isoe = [](ll num) { return (num & 1) == 1; };
-
-void io() {
-     #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif 
-}
-
-void solve() {}
-
-int main() {
-    io();
+void solve() {
     int n;
     cin >> n;
-    if(n % 4 == 1) { out(0,1); out('A',0); }
-    else {
-        if(n % 4 == 0) { out(1,1); out('A',0); }
-        else if(n % 4 == 3) { out(2,1); out('A',0); }
-        else { out(1,1); out('B',0); }
+    vi<int> arr(n);
+    in(arr);
+    int ans = arr[0];
+    int parity = abs(arr[0] % 2);
+
+    for(int i = 1; i < n; i++) {
+        ans = max(ans, arr[i]);
+        if(abs(arr[i] % 2) == parity) continue;
+        parity = abs(arr[i] % 2);
+        if(arr[i - 1] + arr[i] >= arr[i]) arr[i] = arr[i - 1] + arr[i];
+        ans = max(ans, arr[i]);
     }
+
+     out(ans,0); el;
+}
+
+int main() {
+    int t;
+    cin >> t;
+    while(t--) solve();
 }
