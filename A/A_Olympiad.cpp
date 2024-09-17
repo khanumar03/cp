@@ -56,38 +56,14 @@ void io() {
     #endif 
 }
 
-void solve() {
-    int n, m;
-    cin >> n >> m;
+void solve() {}
 
-    string s;
-    cin >> s;
-
-    us<int> st;
-    FOR(i, 0, m, 1) { int t; cin >> t; st.insert(t); }
-
-    string c;
-    cin >> c;
-    map<char, int> mapp;
-    FOR(i, 0, m,1) mapp[c[i]]++;
-
-
-    FOR(i, 1, n + 1, 1) {
-        bool c = 0;
-        hc(c,st,i);
-        if(!c) continue;
-        auto ch = mapp.begin();
-        s[i - 1] = ch->first;
-        ch->second--;
-        if(!ch->second) mapp.erase(ch);
-    }
-
-    out(s,0); el;
-}
-
-int main() {
+int main() { 
     io();
-    int t;
-    cin >> t;
-    while(t--) solve();
+    int n;
+    cin >> n;
+    us<int> st;
+
+    FOR(i, 0, n, 1) { int t; cin >> t; if(t != 0) st.insert(t); }
+    out(st.size(),0);
 }

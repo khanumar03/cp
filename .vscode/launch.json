@@ -29,7 +29,10 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "C/C++: g++.exe build active file"
+            "preLaunchTask": "C/C++: g++.exe build active file",
+            "postDebugTask": {
+                "command": "rm *.exe"
+            }
         }
 
     ]

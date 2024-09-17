@@ -9,6 +9,7 @@
 #include <queue>
 #include <math.h>
 #include <cstring>
+#include <cstdio>
 
 using namespace std;
 
@@ -19,6 +20,9 @@ using vi = vector<T>;
 
 template <typename key, typename value>
 using um = unordered_map<key, value>;
+
+template <typename value>
+using us = unordered_set<value>;
 
 #define el cout << "\n"
 
@@ -36,25 +40,29 @@ using um = unordered_map<key, value>;
 #define all(_arr_) sort(_arr_.begin(), _arr_.end());
 
 // utilities
-#define umc(C, _um_, val) C = _um_.find(val) != _um_.end()
+#define hc(C, _hash_, val) C = _hash_.find(val) != _hash_.end()
 #define rev(_v_) reverse(_v_.begin(), _v_.end())
+#define push(arr,val) arr.push_back(val);
+#define pop(arr) arr.pop_back();
 
 // lambda
 auto dtob = [](ll num) { string s; while(num) { s += to_string(num % 2); num /= 2; } rev(s); return s; };
+auto isoe = [](ll num) { return (num & 1) == 1; };
+
+void io() {
+     #ifndef ONLINE_JUDGE
+        freopen("input.txt", "r", stdin);
+        freopen("output.txt", "w", stdout);
+    #endif 
+}
 
 void solve() {}
 
-vi<int> arr = {1, 2, 3, 4, 5, 4, 3, 2, 1, 3, 4};
-
-int main() {
-    int n = arr.size(); all(arr);
-    int type = -1; int freq = 0;
-
-    FOR(i, 0, n, 1) {
-        int t = arr[i]; int count = 1; int j = i + 1;
-        while(j < n && t == arr[j]) { count++; j++;}
-        if(count > freq) { type = t; freq = count; }
-        i = j;
-    }
-    out(type,0); el;
+int main() { 
+    io();
+    int n;
+    cin >> n;
+    int total = (n + (n - 1)) * (n + (n - 1));
+    int exlcude = (total - 1) / 2;
+    out(total - exlcude,0);
 }
